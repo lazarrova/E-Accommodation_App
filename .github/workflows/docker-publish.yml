@@ -21,10 +21,22 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and push Docker image
+      - name: Build and push backend Docker image
         uses: docker/build-push-action@v5
         with:
           context: ./Accommodation-App-backend
           file: ./Accommodation-App-backend/Dockerfile
           push: true
-          tags: lazarrova/accommodation-app:latest
+          tags:  ${{ secrets.DOCKER_USERNAME }}/accommodation-app-backend:latest
+
+      - name: Build and push frontend Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./accommodation-app-frontend
+          file: ./accommodation-app-frontend/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/accommodation-app-frontend:latest
+          build-args: |
+            VITE_BACKEND_HOST=backend.local
+            VITE_BACKEND_PORT=80
+            VITE_BACKEND_BASE_PATH=/api
