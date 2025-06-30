@@ -7,17 +7,14 @@ let baseURL = "";
 const hostname = window.location.hostname;
 
 if (hostname === "localhost") {
-    baseURL = "http://localhost:8181";
+    baseURL = "http://localhost:9090";
 } else if (hostname === "backend.local") {
     baseURL = "/api";
 } else {
-    baseURL = "http://backend.local/api"; // или остави нешто како default ако треба
+    baseURL = "http://backend.local/api";
 }
 
 const axiosInstance = axios.create({
-    //baseURL: 'http://localhost:8181, //with docker-compose
-    //baseURL: "/api", //with kubernetes
-    //baseURL: "https://accommodation-backend.onrender.com", //with deployment
     baseURL,
     headers: {
         "Content-Type": "application/json",
