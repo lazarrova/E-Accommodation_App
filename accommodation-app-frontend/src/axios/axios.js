@@ -1,24 +1,20 @@
+
+
 import axios from "axios";
-// const baseURL = import.meta.env.MODE === 'development'
-//     ? 'http://localhost:8181'
-//     : '/api';
-let baseURL = "";
 
-const hostname = window.location.hostname;
-
-if (hostname === "localhost") {
-    baseURL = "http://localhost:9090";
-} else if (hostname === "backend.local") {
-    baseURL = "/api";
-} else {
-    baseURL = "http://backend.local/api";
-}
+const baseURL =
+    import.meta.env.MODE === 'development'
+        ? 'http://localhost:9090/api' // docker-compose
+        : 'http://backend.local/api'; // kubernetes ingress
 
 const axiosInstance = axios.create({
-    baseURL,
+    baseURL: baseURL,
     headers: {
         "Content-Type": "application/json",
     },
 });
 
 export default axiosInstance;
+
+
+
