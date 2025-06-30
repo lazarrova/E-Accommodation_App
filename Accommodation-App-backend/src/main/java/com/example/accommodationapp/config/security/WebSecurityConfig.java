@@ -33,7 +33,7 @@ public class WebSecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.disable();
+//        corsConfiguration.disable();
 //        corsConfiguration.setAllowedOrigins(List.of(
 //                "http://localhost:3000",     // за локално девелопирање
 //                "http://frontend.local"      // за production/K8s ingress
