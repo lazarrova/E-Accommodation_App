@@ -16,5 +16,6 @@ spec:
       containers:
         - name: frontend
           image: lazarrova/accommodation-app-frontend:latest
+          imagePullPolicy: Never
           ports:
             - containerPort: 80

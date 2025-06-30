@@ -16,9 +16,12 @@ spec:
       containers:
         - name: backend
           image: lazarrova/accommodation-app-backend:latest
+          imagePullPolicy: Never
           ports:
             - containerPort: 9090
           env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: dev
             - name: DB_HOST
               valueFrom:
                 configMapKeyRef:
