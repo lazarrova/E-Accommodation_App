@@ -33,18 +33,16 @@ public class WebSecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-//        corsConfiguration.disable();
-//        corsConfiguration.setAllowedOrigins(List.of(
-//                "http://localhost:3000",     // за локално девелопирање
-//                "http://frontend.local"      // за production/K8s ingress
-//        ));
-//        corsConfiguration.setAllowedOrigins(List.of("http://localhost:3000", "http://frontend.local"));
+        corsConfiguration.setAllowedOrigins(List.of(
+                "http://localhost:3000",     // за локално девелопирање
+                "http://frontend.local"      // за production/K8s ingress
+        ));
+        corsConfiguration.setAllowedOrigins(List.of("http://localhost:3000", "http://frontend.local"));
         corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
         corsConfiguration.setAllowedHeaders(List.of("*"));
+        corsConfiguration.setAllowCredentials(true);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfiguration);
-        corsConfiguration.setAllowCredentials(true);
-        corsConfiguration.setAllowedOrigins(List.of("*")); //
         return source;
     }
 
