@@ -42,6 +42,7 @@ public class WebSecurityConfig {
         corsConfiguration.setAllowedHeaders(List.of("*"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfiguration);
+        corsConfiguration.setAllowCredentials(true);
         return source;
     }
 
