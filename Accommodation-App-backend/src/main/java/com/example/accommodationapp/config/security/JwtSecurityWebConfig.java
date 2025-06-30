@@ -48,6 +48,7 @@ public class JwtSecurityWebConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfiguration);
         corsConfiguration.setAllowCredentials(true);
+        corsConfiguration.setAllowedOrigins(List.of("*")); //
         return source;
     }
 
