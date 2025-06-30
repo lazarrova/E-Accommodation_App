@@ -4,9 +4,7 @@ metadata:
   name: backend-config
   namespace: accommodation-app
 data:
-  DB_HOST: "db"
+  DB_HOST: "postgres"
   DB_PORT: "5432"
   DB_NAME: "accommodations"
   DB_USERNAME: "emt"
-#  DB_URL: jdbc:postgresql://db:5432/accommodations
-#  DB_USERNAME: emt
