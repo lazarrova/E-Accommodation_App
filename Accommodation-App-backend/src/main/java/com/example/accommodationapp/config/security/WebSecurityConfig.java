@@ -44,15 +44,16 @@ public class WebSecurityConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfiguration);
         corsConfiguration.setAllowCredentials(true);
-//        corsConfiguration.setAllowedOrigins(List.of("*")); //
+        corsConfiguration.setAllowedOrigins(List.of("*")); //
         return source;
     }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
-                .cors(httpSecurityCorsConfigurer -> httpSecurityCorsConfigurer.configurationSource(
-                        corsConfigurationSource()));
+                .cors().disable
+//                .cors(httpSecurityCorsConfigurer -> httpSecurityCorsConfigurer.configurationSource(
+//                        corsConfigurationSource()));
 //                .authorizeHttpRequests(requests -> requests.requestMatchers(
 //                                "/api/accommodations",
 //                                "/api/hosts",
